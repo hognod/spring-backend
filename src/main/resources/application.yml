@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: backend
+
+springdoc:
+  swagger-ui:
+    path: /docs
+    tags-sorter: alpha
+    operations-sorter: method
