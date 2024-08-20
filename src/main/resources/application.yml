@@ -1,6 +1,17 @@
 spring:
   application:
     name: backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hognod
+    driver-class-name: org.postgresql.Driver
+    username: hognod
+    password: hognod
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.hognod.backend.**.vo, com.hognod.backend.**.dto
+  configuration:
+    map-underscore-to-camel-case: true
 
 springdoc:
   swagger-ui:
