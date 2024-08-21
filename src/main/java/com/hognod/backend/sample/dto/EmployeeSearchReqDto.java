@@ -13,8 +13,12 @@ public class EmployeeSearchReqDto extends PageRequestDto {
     private String firstName;
     @Schema(description = "filter 조건 lastName", defaultValue = "")
     private String lastName;
+    @Schema(description = "filter 조건 email", defaultValue = "")
+    private String email;
+    @Schema(description = "filter 조건 phone 010-XXXX-XXXX", defaultValue = "")
+    private String phone;
     @Schema(description = "filter 조건 jobTitle", defaultValue = "")
     private String jobTitle;
-    @Schema(description = "filter 조건 hireDate", defaultValue = "")
+    @Schema(description = "filter 조건 hireDate YYYY-MM-DD", defaultValue = "")
     private String hireDate;
 }
