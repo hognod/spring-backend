@@ -1,5 +1,6 @@
 package com.hognod.backend.sample.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hognod.backend.sample.vo.EmployeeVo;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
@@ -37,16 +38,17 @@ public class EmployeeCreateReqDto {
     @Length(min = 10, max = 10)
     @Schema(description = "YYYY-MM-DD")
     private Date hireDate;
+    @JsonIgnore
     @Schema(description = "생성자 ID", defaultValue = "1")
-    private long createBy;
+    private long createdBy;
+    @JsonIgnore
     @Schema(description = "수정자 ID", defaultValue = "1")
-    private long updateBy;
+    private long updatedBy;
 
     public EmployeeVo toEmployeeVo() {
         return EmployeeVo.builder()
                 .firstName(this.firstName)
                 .lastName(this.lastName).
                 build();
-
     }
 }

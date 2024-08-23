@@ -18,3 +18,7 @@ springdoc:
     path: /docs
     tags-sorter: alpha
     operations-sorter: method
+
+app:
+  sql-injection:
+    allowed-pattern: ".*[^a-zA-Z0-9_\\s,].*"

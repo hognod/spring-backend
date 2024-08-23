@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hognod.backend.sample.mapper.EmployeeMapper">
+    <sql id="columnEmployee">
+        id, first_name, last_name, email, phone, job_title, hire_date, created_by, created_at, updated_by, updated_at
+    </sql>
+
+    <sql id="conditionEmployee">
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="@com.hognod.backend.common.CommonComparator@isNotEmpty(firstName)">
+                AND first_name = #{firstName}
+            </if>
+            <if test="@com.hognod.backend.common.CommonComparator@isNotEmpty(lastName)">
+                AND last_name = #{lastName}
+            </if>
+            <if test="@com.hognod.backend.common.CommonComparator@isNotEmpty(email)">
+                AND email = #{email}
+            </if>
+            <if test="@com.hognod.backend.common.CommonComparator@isNotEmpty(phone)">
+                AND phone = #{phone}
+            </if>
+            <if test="@com.hognod.backend.common.CommonComparator@isNotEmpty(jobTitle)">
+                AND job_title = #{jobTitle}
+            </if>
+            <if test="@com.hognod.backend.common.CommonComparator@isNotEmpty(hireDate)">
+                AND hire_date = #{hireDate}
+            </if>
+        </trim>
+    </sql>
+
+    <select id="selectEmployees" parameterType="EmployeeSearchReqDto" resultType="EmployeeVo">
+        SELECT
+            <include refid="columnEmployee"></include>
+        FROM
+            employees
+        <include refid="conditionEmployee"></include>
+        <if test="@com.hognod.backend.common.CommonComparator@isNotEmptyForDynamicSql(sort, orderBy)">
+            ORDER BY ${sort} ${orderBy}
+        </if>
+        <if test="@com.hognod.backend.common.CommonComparator@isEmptyForDynamicSql(sort, orderBy)">
+            ORDER BY id DESC
+        </if>
+        LIMIT #{pageSize} OFFSET #{offset}
+    </select>
+    
+    <select id="selectEmployee" parameterType="long" resultType="EmployeeVo">
+        SELECT
+            <include refid="columnEmployee"></include>
+        FROM
+            employees
+        WHERE
+            id = #{id}
+    </select>
+    
+    <insert id="insertEmployee" parameterType="EmployeeCreateReqDto">
+        INSERT INTO employees(first_name, last_name, email, phone, job_title, hire_date, created_by, created_at, updated_by, updated_at)
+        VALUES (#{firstName}, #{lastName}, #{email}, #{phone}, #{jobTitle}, #{hireDate}, #{createdBy}, now(), #{updatedBy}, now())
+    </insert>
+
+    <update id="updateEmployee" parameterType="EmployeeUpdateReqDto">
+        UPDATE
+            employees
+        SET
+            first_name = #{firstName},
+            last_name = #{lastName},
+            email = #{email},
+            phone = #{phone},
+            job_title = #{jobTitle},
+            hire_date = #{hireDate},
+            updated_by = #{updatedBy},
+            updated_at = now()
+        WHERE
+            id = #{id}
+    </update>
+
+    <update id="deleteEmployee" parameterType="long">
+        UPDATE
+            employees
+        SET
+            deleted = true,
+            deleted_by = 1,
+            deleted_at = now()
+        WHERE
+            id = #{id}
+    </update>
+</mapper>

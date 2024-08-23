@@ -1,5 +1,6 @@
 package com.hognod.backend.sample.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -38,6 +39,7 @@ public class EmployeeUpdateReqDto {
     @Length(min = 10, max = 10)
     @Schema(description = "YYYY-MM-DD")
     private String hireDate;
+    @JsonIgnore
     @Schema(description = "수정자 ID", defaultValue = "1")
     private long updatedBy;
 }
