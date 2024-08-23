@@ -40,10 +40,10 @@ public class EmployeeCreateReqDto {
     private Date hireDate;
     @JsonIgnore
     @Schema(description = "생성자 ID", defaultValue = "1")
-    private long createBy;
+    private long createdBy;
     @JsonIgnore
     @Schema(description = "수정자 ID", defaultValue = "1")
-    private long updateBy;
+    private long updatedBy;
 
     public EmployeeVo toEmployeeVo() {
         return EmployeeVo.builder()
