@@ -4,10 +4,12 @@ import com.hognod.backend.sample.dto.EmployeeCreateReqDto;
 import com.hognod.backend.sample.dto.EmployeeSearchReqDto;
 import com.hognod.backend.sample.dto.EmployeeUpdateReqDto;
 import com.hognod.backend.sample.vo.EmployeeVo;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+@Mapper
 public interface EmployeeMapper {
     List<EmployeeVo> selectEmployees(EmployeeSearchReqDto employeeSearchReqDto);
     EmployeeVo selectEmployee(@Param("id") long id);
