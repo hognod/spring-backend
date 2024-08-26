@@ -84,4 +84,12 @@
         WHERE
             id = #{id}
     </update>
+
+    <select id="countEmployee" parameterType="EmployeeSearchReqDto" resultType="int">
+        SELECT
+            count(*)
+        FROM
+            employees
+        <include refid="conditionEmployee"></include>
+    </select>
 </mapper>
