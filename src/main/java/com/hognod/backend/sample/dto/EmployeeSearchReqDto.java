@@ -9,16 +9,16 @@ import lombok.Setter;
 @Setter
 @Schema(description = "Employee 리스트 요청")
 public class EmployeeSearchReqDto extends PageRequestDto {
-    @Schema(description = "filter 조건 firstName", defaultValue = "")
+    @Schema(description = "filter 조건 firstName", defaultValue = " ")
     private String firstName;
-    @Schema(description = "filter 조건 lastName", defaultValue = "")
+    @Schema(description = "filter 조건 lastName", defaultValue = " ")
     private String lastName;
-    @Schema(description = "filter 조건 email", defaultValue = "")
+    @Schema(description = "filter 조건 email", defaultValue = " ")
     private String email;
-    @Schema(description = "filter 조건 phone 010-XXXX-XXXX", defaultValue = "")
+    @Schema(description = "filter 조건 phone 010-XXXX-XXXX", defaultValue = " ")
     private String phone;
-    @Schema(description = "filter 조건 jobTitle", defaultValue = "")
+    @Schema(description = "filter 조건 jobTitle", defaultValue = " ")
     private String jobTitle;
-    @Schema(description = "filter 조건 hireDate YYYY-MM-DD", defaultValue = "")
+    @Schema(description = "filter 조건 hireDate YYYY-MM-DD", defaultValue = " ")
     private String hireDate;
 }
