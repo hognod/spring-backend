@@ -50,7 +50,7 @@ public class EmployeeService {
         }
     }
 
-    public void delete(long id, long deletedBy) {
-        employeeMapper.deleteEmployee(id, deletedBy);
+    public int delete(long id, long deletedBy) {
+        return employeeMapper.deleteEmployee(id, deletedBy);
     }
 }
