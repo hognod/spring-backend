@@ -24,7 +24,7 @@
                 AND job_title = #{jobTitle}
             </if>
             <if test="@com.hognod.backend.common.CommonComparator@isNotEmpty(hireDate)">
-                AND hire_date = #{hireDate}
+                AND hire_date = TO_DATE(#{hireDate}, 'YYYY-MM-DD')
             </if>
         </trim>
     </sql>
@@ -55,7 +55,7 @@
     
     <insert id="insertEmployee" parameterType="EmployeeCreateReqDto">
         INSERT INTO employees(first_name, last_name, email, phone, job_title, hire_date, created_by, created_at, updated_by, updated_at)
-        VALUES (#{firstName}, #{lastName}, #{email}, #{phone}, #{jobTitle}, #{hireDate}, #{createdBy}, now(), #{updatedBy}, now())
+        VALUES (#{firstName}, #{lastName}, #{email}, #{phone}, #{jobTitle}, TO_DATE(#{hireDate}, 'YYYY-MM-DD'), #{createdBy}, now(), #{updatedBy}, now())
     </insert>
 
     <update id="updateEmployee" parameterType="EmployeeUpdateReqDto">
@@ -67,7 +67,7 @@
             email = #{email},
             phone = #{phone},
             job_title = #{jobTitle},
-            hire_date = #{hireDate},
+            hire_date = TO_DATE(#{hireDate}, 'YYYY-MM-DD'),
             updated_by = #{updatedBy},
             updated_at = now()
         WHERE

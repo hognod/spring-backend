@@ -8,8 +8,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
-import java.sql.Date;
-
 @Getter
 @Setter
 @Schema(description = "Employee 생성 요청")
@@ -37,7 +35,7 @@ public class EmployeeCreateReqDto {
     @NotBlank
     @Length(min = 10, max = 10)
     @Schema(description = "YYYY-MM-DD")
-    private Date hireDate;
+    private String hireDate;
     @JsonIgnore
     @Schema(description = "생성자 ID", defaultValue = "1")
     private long createdBy;

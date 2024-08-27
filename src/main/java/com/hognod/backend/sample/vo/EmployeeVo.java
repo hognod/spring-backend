@@ -3,7 +3,7 @@ package com.hognod.backend.sample.vo;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -24,7 +24,7 @@ public class EmployeeVo {
     @Schema(description = "직책")
     private String jobTitle;
     @Schema(description = "YYYY-MM-DD")
-    private Date hireDate;
+    private String hireDate;
     @Schema(description = "생성자 ID")
     private long createdBy;
     @Schema(description = "생성일")
@@ -35,7 +35,7 @@ public class EmployeeVo {
     private LocalDateTime updatedAt;
 
     @Builder
-    public EmployeeVo(long id, String firstName, String lastName, String email, String phone, String jobTitle, Date hireDate, long createdBy, LocalDateTime createdAt, long updatedBy, LocalDateTime updatedAt) {
+    public EmployeeVo(long id, String firstName, String lastName, String email, String phone, String jobTitle, String hireDate, long createdBy, LocalDateTime createdAt, long updatedBy, LocalDateTime updatedAt) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
