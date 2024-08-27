@@ -15,6 +15,6 @@ public interface EmployeeMapper {
     EmployeeVo selectEmployee(@Param("id") long id);
     void insertEmployee(EmployeeCreateReqDto employeeCreateReqDto);
     int updateEmployee(EmployeeUpdateReqDto employeeUpdateReqDto);
-    void deleteEmployee(@Param("id") long id, @Param("deletedBy") long deletedBy);
+    int deleteEmployee(@Param("id") long id, @Param("deletedBy") long deletedBy);
     int countEmployee(EmployeeSearchReqDto employeeSearchReqDto);
 }
