@@ -3,11 +3,11 @@ services:
     container_name: hognod_db
     image: postgres:13.16
     ports:
-      - "5432:5432"
+      - "5431:5432"
     environment:
       - POSTGRES_USER=hognod
       - POSTGRES_PASSWORD=hognod
       - POSTGRES_DB=hognod
     volumes:
-      - ${HOME}/data/llmops/docker_db_volume/:/var/lib/postgresql/data
+      - ${HOME}/data/hognod/docker_db_volume/:/var/lib/postgresql/data
       - ./config/:/docker-entrypoint-initdb.d/
