@@ -2,7 +2,7 @@ spring:
   application:
     name: backend
   datasource:
-    url: jdbc:postgresql://localhost:5432/hognod
+    url: jdbc:postgresql://localhost:5431/hognod
     driver-class-name: org.postgresql.Driver
     username: hognod
     password: hognod
